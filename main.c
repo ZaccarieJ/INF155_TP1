@@ -1,12 +1,12 @@
 /*
-TP2 - Labirynthe 
+TP2 - Labirynthe
 Ce projet vise � r�soudre un labyrinthe en trouvant un chemin qui nous mne vers
-la sortie du labyrinthe en partant de son entr�e. 
+la sortie du labyrinthe en partant de son entr�e.
 
 
-Auteurs: 
+Auteurs:
 
-Date: 
+Date:
 
 */
 
@@ -18,7 +18,30 @@ Date:
 #include "labyrinthe_io.h"
 
 #define TAILLE_MAX_PILE 1000 //La taille maximale des piles
+//Liste des prototypes
+void lab_calculer_deplacements_possibles(
+	int grille[][TAILLE_MAX_GRILLE],
+	int hauteur_grille,
+	int largeur_grille,
+	int pos_ligne,
+	int pos_colonne,
+	int solution_partielle[][2],
+	int *nb_deplacements,
+	int deplacements[4][2]);
 
+int lab_choisir_deplacement( int deplacements_possibles[][2],int nb_deplacements_possibles);
+
+int lab_est_cases_adjacentes(int case1[2], int case2[2]);
+
+int lab_est_une_sortie( int position[2],int grille[][TAILLE_MAX_GRILLE],int hauteur_grille,int largeur_grille);
+
+int lab_resoudre_profondeur(int grille[][TAILLE_MAX_GRILLE],int hauteur_grille,int largeur_grille,int entree[2],int pile_solution[][2], int debug);
+
+int charger_labyrinthe( char *nom_fichier,int grille[][TAILLE_MAX_GRILLE],int point_entree[2],int *hauteur_grille,int *largeur_grille);
+
+int selection_menu(int grille_chargee) ;
+
+void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille);
 
 int main(void)
 {
@@ -26,7 +49,7 @@ int main(void)
 	//NOTE: Ce code vous est fourni � titre d'exemple pour que vous compreniez
 	//le fonctionnement d'une pile. Vous ne devez pas conserver ce code avec votre projet!
 	int la_pile[TAILLE_MAX_PILE][2]; //Tableau qui sera utilis� pour stocker la pile d'exemple
-	int depile_x; //Stocke la coordonn�e x d�pil�e 
+	int depile_x; //Stocke la coordonn�e x d�pil�e
 	int depile_y; //Stocke la coordonn�e y d�pil�e
 
 	int grille[TAILLE_MAX_GRILLE][TAILLE_MAX_GRILLE]; //Tableau 2D qui contient la grille du labyrinthe
@@ -69,7 +92,7 @@ int main(void)
 		printf("La coordonnee 45,8 n'est pas dans la pile!\n");
 	}
 
-	//On d�pile tous les �l�ments de la pile en les affichant, jusqu'� ce qu'elle soit vide. 
+	//On d�pile tous les �l�ments de la pile en les affichant, jusqu'� ce qu'elle soit vide.
 	//Vous remarquerez que le dernier ajout� s'affiche en premier.
 	printf("\n*** Contenu de la pile: ***\n");
 	while (!pile_est_vide(la_pile))
@@ -80,7 +103,7 @@ int main(void)
 
 	/*** PARTIE 2: CHARGEMENT D'UNE GRILLE DEPUIS LE DISQUE ***/
 	printf("\n\n");
-	
+
 	succes_chargement=charger_labyrinthe("../grille1.txt", grille, point_entree, &hauteur_grille, &largeur_grille);
 
 	if (!succes_chargement)
@@ -94,7 +117,7 @@ int main(void)
 	//Si on est ici, c'est que le chargement s'est bien pass�.
 	printf("La grille comporte: %d lignes et %d colonnes\n", hauteur_grille, largeur_grille);
 	printf("Le point d'entree se trouve � la coordonn�e (%d, %d)\n", point_entree[0], point_entree[1]);
-	
+
 	if (grille[0][9] == 1)
 	{
 		printf("La case (0,9) est un mur.\n");
@@ -115,4 +138,43 @@ int main(void)
 
 	system("pause");
 	return EXIT_SUCCESS;
+}
+
+// FONCTIONS A AJOUTER
+void lab_calculer_deplacements_possibles(
+	int grille[][TAILLE_MAX_GRILLE],
+	int hauteur_grille,
+	int largeur_grille,
+	int pos_ligne,
+	int pos_colonne,
+	int solution_partielle[][2],
+	int *nb_deplacements,
+	int deplacements[4][2]) {
+}
+
+int lab_choisir_deplacement( int deplacements_possibles[][2],int nb_deplacements_possibles) {
+}
+
+int lab_est_cases_adjacentes(int case1[2], int case2[2]) {
+}
+
+int lab_est_une_sortie( int position[2],int grille[][TAILLE_MAX_GRILLE],int hauteur_grille, int largeur_grille) {
+}
+
+int lab_resoudre_profondeur(
+	int grille[][TAILLE_MAX_GRILLE],
+	int hauteur_grille,
+	int largeur_grille,
+	int entree[2],
+	int pile_solution[][2],
+	int debug){
+}
+
+int charger_labyrinthe( char *nom_fichier,int grille[][TAILLE_MAX_GRILLE],int point_entree[2],int *hauteur_grille,int *largeur_grille) {
+}
+
+int selection_menu(int grille_chargee) {
+}
+
+void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille) {
 }
