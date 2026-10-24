@@ -46,6 +46,9 @@ void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille);
 int main(void)
 {
 
+
+	//allo les gens
+
 	//NOTE: Ce code vous est fourni � titre d'exemple pour que vous compreniez
 	//le fonctionnement d'une pile. Vous ne devez pas conserver ce code avec votre projet!
 	int la_pile[TAILLE_MAX_PILE][2]; //Tableau qui sera utilis� pour stocker la pile d'exemple
