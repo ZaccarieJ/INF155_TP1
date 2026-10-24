@@ -2,7 +2,7 @@
 Module: labyrinthe
 Description: Fournit l'ensemble de fonction permettant de résoudre un labyrinthe
 
-Auteur: 
+Auteur: Filipe Carvalho - Thomas DiPietro - Zaccarie Jetee
 
 
 Date: 

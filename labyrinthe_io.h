@@ -2,7 +2,7 @@
 Module: labyrinthe_io
 Description: Module de fonction d'entr�e/sortie en lien avec le programme du labyrinthe
 
-Auteur:    
+Auteur: Filipe Carvalho - Thomas DiPietro - Zaccarie Jetee
 
 Date: 
 */

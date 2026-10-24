@@ -1,7 +1,7 @@
 /*
 Module: labyrinthe_io
 
-Auteur: 
+Auteur: Filipe Carvalho - Thomas DiPietro - Zaccarie Jetee
 
 Date: 
 */

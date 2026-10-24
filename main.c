@@ -1,5 +1,4 @@
-/*
- *Thomas Di Pietro......
+/**
 TP2 - Labirynthe
 Ce projet vise � r�soudre un labyrinthe en trouvant un chemin qui nous mne vers
 la sortie du labyrinthe en partant de son entr�e.
@@ -9,7 +8,7 @@ Auteurs: Filipe Carvalho - Thomas DiPietro - Zaccarie Jetee
 
 Date:
 
-*/
+**/
 
 
 #include <stdio.h>
