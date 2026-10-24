@@ -5,7 +5,7 @@ Ce projet vise � r�soudre un labyrinthe en trouvant un chemin qui nous mne v
 la sortie du labyrinthe en partant de son entr�e.
 
 
-Auteurs:
+Auteurs: Filipe Carvalho - Thomas DiPietro - Zaccarrie Jetee
 
 Date:
 
@@ -48,7 +48,7 @@ int main(void)
 {
 
 
-	//allo les gens
+	
 
 	//NOTE: Ce code vous est fourni � titre d'exemple pour que vous compreniez
 	//le fonctionnement d'une pile. Vous ne devez pas conserver ce code avec votre projet!
