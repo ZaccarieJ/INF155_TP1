@@ -1,6 +1,6 @@
 /*
 Module: labyrinthe_io
-Description: Module de fonction d'entrée/sortie en lien avec le programme du labyrinthe
+Description: Module de fonction d'entrï¿½e/sortie en lien avec le programme du labyrinthe
 
 Auteur:    
 
@@ -11,30 +11,30 @@ Date:
 #define LABYRINTHE_IO_H
 
 
-//Dépendances du module
+//Dï¿½pendances du module
 #include "labyrinthe.h"
 #include <stdio.h>
 #include <string.h>
 
 //Constantes
-#define TAILLE_MAX_NOM_FICHIER 100 //Taille maximale (en cracatères) du nom de fichier
+#define TAILLE_MAX_NOM_FICHIER 100 //Taille maximale (en cracatï¿½res) du nom de fichier
 
 /*
 Fonction: CHARGER_LABYRINTHE
 Description: Charge un labyrinthe depuis le disque dur et le stocke dans "grille". Si une erreur
 			 se produit (fichier introuvable, fichier non-conforme), la fonction retourne faux. Sinon
 			 elle retourne vrai.
-Paramètres:
-- nom_fichier (chaine de caractères): Le nom du fichier sur le disque à charger. Ça doit être un fichier
+Paramï¿½tres:
+- nom_fichier (chaine de caractï¿½res): Le nom du fichier sur le disque ï¿½ charger. ï¿½a doit ï¿½tre un fichier
 										 texte comprenant uniquement des * (pour les murs), des espaces (pour
-										 les couloirs et une lettre E pour représenter l'entrée.
+										 les couloirs et une lettre E pour reprï¿½senter l'entrï¿½e.
 - grille: (tableau 2D d'entiers): Tableau qui contiendra la topologie de la grille. Chaque case aura soit la
 								  valeur 0 (pour un couloir) soit 1 (pour un mur).
-- point_entree: (tableau de deux cases) Tableau dans lequel seront stockées les coordonnées du point d'entrée.
-- hauteur_grille: (pointeur d'entier) Adresse dans laquelle sera stockée la hauteur de la grille (nombre de lignes)
-- largeur_grille: (pointeur d'entier) Adresse dans laquelle sera stockée la largeur de la grille (nombre de colonnes)
-Retour : (valeur booléenne) Vrai si la grille s’est chargée correctement, faux sinon.
-Paramètres modifiés : grille, point_entree, *hauteur_grille et *largeur_grille.
+- point_entree: (tableau de deux cases) Tableau dans lequel seront stockï¿½es les coordonnï¿½es du point d'entrï¿½e.
+- hauteur_grille: (pointeur d'entier) Adresse dans laquelle sera stockï¿½e la hauteur de la grille (nombre de lignes)
+- largeur_grille: (pointeur d'entier) Adresse dans laquelle sera stockï¿½e la largeur de la grille (nombre de colonnes)
+Retour : (valeur boolï¿½enne) Vrai si la grille sï¿½est chargï¿½e correctement, faux sinon.
+Paramï¿½tres modifiï¿½s : grille, point_entree, *hauteur_grille et *largeur_grille.
 */
 int charger_labyrinthe(
 	char* nom_fichier,
@@ -45,3 +45,66 @@ int charger_labyrinthe(
 
 
 #endif // !LABYRINTHE_IO_H
+
+void lab_calculer_deplacements_possibles(
+	int grille[][TAILLE_MAX_GRILLE],
+	int hauteur_grille,
+	int largeur_grille,
+	int pos_ligne,
+	int pos_colonne,
+	int solution_partielle[][2],
+	int *nb_deplacements,
+	int deplacements[4][2]);
+
+int lab_choisir_deplacement( int deplacements_possibles[][2],int nb_deplacements_possibles);
+
+int lab_est_cases_adjacentes(int case1[2], int case2[2]);
+
+int lab_est_une_sortie( int position[2],int grille[][TAILLE_MAX_GRILLE],int hauteur_grille,int largeur_grille);
+
+int lab_resoudre_profondeur(int grille[][TAILLE_MAX_GRILLE],int hauteur_grille,int largeur_grille,int entree[2],int pile_solution[][2], int debug);
+
+int charger_labyrinthe( char *nom_fichier,int grille[][TAILLE_MAX_GRILLE],int point_entree[2],int *hauteur_grille,int *largeur_grille);
+
+int selection_menu(int grille_chargee) ;
+
+void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille);
+
+
+void lab_calculer_deplacements_possibles(
+	int grille[][TAILLE_MAX_GRILLE],
+	int hauteur_grille,
+	int largeur_grille,
+	int pos_ligne,
+	int pos_colonne,
+	int solution_partielle[][2],
+	int *nb_deplacements,
+	int deplacements[4][2]) {
+}
+
+int lab_choisir_deplacement( int deplacements_possibles[][2],int nb_deplacements_possibles) {
+}
+
+int lab_est_cases_adjacentes(int case1[2], int case2[2]) {
+}
+
+int lab_est_une_sortie( int position[2],int grille[][TAILLE_MAX_GRILLE],int hauteur_grille, int largeur_grille) {
+}
+
+int lab_resoudre_profondeur(
+	int grille[][TAILLE_MAX_GRILLE],
+	int hauteur_grille,
+	int largeur_grille,
+	int entree[2],
+	int pile_solution[][2],
+	int debug){
+}
+
+int charger_labyrinthe( char *nom_fichier,int grille[][TAILLE_MAX_GRILLE],int point_entree[2],int *hauteur_grille,int *largeur_grille) {
+}
+
+int selection_menu(int grille_chargee) {
+}
+
+void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille) {
+}
