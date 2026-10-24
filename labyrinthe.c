@@ -1,6 +1,6 @@
 
 #include "labyrinthe.h"
-
+#include "pile.h"
 
 
 // FONCTIONS A AJOUTER
