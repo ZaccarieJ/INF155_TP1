@@ -14,9 +14,6 @@ Date:
 
 /*******IMPLEMENTATION DES FONCTIONS***********/
 
-void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille) ;
-
-int selection_menu(int grille_chargee);
 
 void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille) {
 }
