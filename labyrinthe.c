@@ -1,7 +1,8 @@
 
 #include "labyrinthe.h"
 #include "pile.h"
-
+#include <stdlib.h>
+#include <stdio.h>
 
 // FONCTIONS A AJOUTER
 
@@ -11,6 +12,19 @@ void lab_afficher_grille(
     int hauteur_grille,
     int largeur_grille,
     int pile_solution[][2]) {
+
+    for (int i=0; i<hauteur_grille;i++) {
+        for (int j=0; j<largeur_grille;j++) {
+            if (grille[i][j]==1) {
+                printf("%c",219);
+            }
+            else if (grille[i][j]==0) {
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+
 
 }
 

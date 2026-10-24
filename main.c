@@ -47,6 +47,7 @@ int main(void)
 	pile_empiler(la_pile, 0, 1);
 	pile_empiler(la_pile, 21, 8);
 
+
 	//On regarde ce qui se trouve en haut de la pile, sans le d�piler
 	pile_haut_pile(la_pile, &depile_y, &depile_x);
 	printf("Le haut de la pile contient la coordonn�e: (%d, %d)\n", depile_y, depile_x);
@@ -82,7 +83,8 @@ int main(void)
 	printf("\n\n");
 
 	succes_chargement=charger_labyrinthe("../grille1.txt", grille, point_entree, &hauteur_grille, &largeur_grille);
-
+	//AFFICHER GRILLE
+	lab_afficher_grille(grille,hauteur_grille,largeur_grille,NULL);
 	if (!succes_chargement)
 	{
 		printf("Une erreur s'est produite lors du chargement de la grille.\n");
