@@ -47,7 +47,7 @@ int main(void)
 {
 
 
-	//allo les gens
+	
 
 	//NOTE: Ce code vous est fourni � titre d'exemple pour que vous compreniez
 	//le fonctionnement d'une pile. Vous ne devez pas conserver ce code avec votre projet!
