@@ -42,3 +42,4 @@ Param�tres modifi�s : grille, point_entree, *hauteur_grille et *largeur_gril
 #endif // !LABYRINTHE_IO_H
 
 
+int charger_labyrinthe(char* nom_fichier, int grille[][TAILLE_MAX_GRILLE], int point_entree[2], int* hauteur_grille, int* largeur_grille);
