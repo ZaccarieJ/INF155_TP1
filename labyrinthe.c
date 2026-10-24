@@ -1,5 +1,10 @@
 
 #include "labyrinthe.h"
+void lab_afficher_grille(
+ int grille[][TAILLE_MAX_GRILLE],
+ int hauteur_grille,
+ int largeur_grille,
+ int pile_solution[][2]);
 
 int lab_choisir_deplacement( int deplacements_possibles[][2],int nb_deplacements_possibles);
 
@@ -9,20 +14,13 @@ int lab_est_une_sortie( int position[2],int grille[][TAILLE_MAX_GRILLE],int haut
 
 int lab_resoudre_profondeur(int grille[][TAILLE_MAX_GRILLE],int hauteur_grille,int largeur_grille,int entree[2],int pile_solution[][2], int debug);
 
-int charger_labyrinthe( char *nom_fichier,int grille[][TAILLE_MAX_GRILLE],int point_entree[2],int *hauteur_grille,int *largeur_grille);
 
-int selection_menu(int grille_chargee) ;
+
 
 void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille);
 
 
 // FONCTIONS A AJOUTER
-
-void lab_afficher_grille(
- int grille[][TAILLE_MAX_GRILLE],
- int hauteur_grille,
- int largeur_grille,
- int pile_solution[][2]);
 
 
 void lab_calculer_deplacements_possibles(
@@ -54,11 +52,9 @@ int lab_resoudre_profondeur(
     int debug){
 }
 
-int charger_labyrinthe( char *nom_fichier,int grille[][TAILLE_MAX_GRILLE],int point_entree[2],int *hauteur_grille,int *largeur_grille) {
-}
 
-int selection_menu(int grille_chargee) {
-}
+
+
 
 void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille) {
 }

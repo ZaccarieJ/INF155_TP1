@@ -36,12 +36,7 @@ Param�tres:
 Retour : (valeur bool�enne) Vrai si la grille s�est charg�e correctement, faux sinon.
 Param�tres modifi�s : grille, point_entree, *hauteur_grille et *largeur_grille.
 */
-int charger_labyrinthe(
-	char* nom_fichier,
-	int grille[][TAILLE_MAX_GRILLE],
-	int point_entree[2],
-	int* hauteur_grille,
-	int* largeur_grille);
+
 
 
 #endif // !LABYRINTHE_IO_H
