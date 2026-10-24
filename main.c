@@ -4,7 +4,7 @@ Ce projet vise � r�soudre un labyrinthe en trouvant un chemin qui nous mne v
 la sortie du labyrinthe en partant de son entr�e.
 
 
-Auteurs:
+Auteurs: Filipe Carvalho - Thomas DiPietro - Zaccarrie Jetee
 
 Date:
 
