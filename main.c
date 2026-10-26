@@ -46,7 +46,10 @@ int main(void)
 	pile_empiler(la_pile, 0, 1);
 	pile_empiler(la_pile, 21, 8);
 
-
+	//ajouter par moi
+	int sol_partielle[TAILLE_MAX_GRILLE][2];
+	int deplacements[4][2];
+	int nb_dep_poss =0;
 	//On regarde ce qui se trouve en haut de la pile, sans le d�piler
 	pile_haut_pile(la_pile, &depile_y, &depile_x);
 	printf("Le haut de la pile contient la coordonn�e: (%d, %d)\n", depile_y, depile_x);
@@ -114,7 +117,27 @@ int main(void)
 		printf("La case (3,10) est un couloir.\n");
 	}
 
+	pile_initialiser(sol_partielle,TAILLE_MAX_GRILLE);
+	pile_empiler(sol_partielle, 0, 10);
+	pile_empiler(sol_partielle, 1, 10);
+	pile_empiler(sol_partielle, 1, 9);
+	pile_empiler(sol_partielle, 1, 8);
+	pile_empiler(sol_partielle, 2, 8);
+	pile_empiler(sol_partielle, 3, 8);
+	pile_empiler(sol_partielle, 3, 9);
+
+	//pile_empiler(sol_partielle, 3, 10);
+	lab_afficher_grille(grille,hauteur_grille,largeur_grille,sol_partielle);
+	lab_calculer_deplacements_possibles(grille,hauteur_grille,largeur_grille,3,8,sol_partielle,&nb_dep_poss,deplacements);
+
+	printf("nb dep poss: %d\n",nb_dep_poss);
+	for (int i=0; i<nb_dep_poss;i++) {
+		printf("%d,%d\n",deplacements[i][0],deplacements[i][1]);
+	}
+
+
 	system("pause");
 	return EXIT_SUCCESS;
+
 }
 
