@@ -119,7 +119,7 @@ int main(void)
 	}
 
 
-	//SÉPARATION
+	//SÉPARATION -TEST
 	srand((unsigned int)time(NULL));
 	pile_initialiser(sol_partielle,TAILLE_MAX_GRILLE);
 	pile_empiler(sol_partielle, 0, 10);
@@ -128,7 +128,7 @@ int main(void)
 	pile_empiler(sol_partielle, 1, 8);
 	pile_empiler(sol_partielle, 2, 8);
 	pile_empiler(sol_partielle, 3, 8);
-	pile_empiler(sol_partielle, 3, 9);
+
 
 	//pile_empiler(sol_partielle, 3, 10);
 	lab_afficher_grille(grille,hauteur_grille,largeur_grille,sol_partielle);
@@ -138,6 +138,8 @@ int main(void)
 	for (int i=0; i<nb_dep_poss;i++) {
 		printf("%d,%d\n",deplacements[i][0],deplacements[i][1]);
 	}
+	//Test Randomiser
+	printf("Random : %d\n",lab_choisir_deplacement(deplacements, nb_dep_poss));
 
 
 	system("pause");
