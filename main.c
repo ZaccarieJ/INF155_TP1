@@ -16,6 +16,7 @@ Date:
 #include "pile.h"
 #include "labyrinthe.h"
 #include "labyrinthe_io.h"
+#include <time.h>
 
 #define TAILLE_MAX_PILE 1000 //La taille maximale des piles
 //Liste des prototypes
@@ -117,6 +118,9 @@ int main(void)
 		printf("La case (3,10) est un couloir.\n");
 	}
 
+
+	//SÉPARATION
+	srand((unsigned int)time(NULL));
 	pile_initialiser(sol_partielle,TAILLE_MAX_GRILLE);
 	pile_empiler(sol_partielle, 0, 10);
 	pile_empiler(sol_partielle, 1, 10);

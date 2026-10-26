@@ -1,6 +1,6 @@
 /*
 Module: labyrinthe
-Description: Fournit l'ensemble de fonction permettant de résoudre un labyrinthe
+Description: Fournit l'ensemble de fonction permettant de rï¿½soudre un labyrinthe
 
 Auteur: Filipe Carvalho - Thomas DiPietro - Zaccarie Jetee
 
@@ -16,6 +16,8 @@ Date:
 
 
 #endif
+
+int nb_aleatoire(int min, int max);
 
 void lab_afficher_grille(int grille[][TAILLE_MAX_GRILLE],int hauteur_grille,int largeur_grille, int pile_solution[][2]);
 
