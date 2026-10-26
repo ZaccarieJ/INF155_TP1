@@ -17,7 +17,6 @@ Date:
 
 #endif
 
-int nb_aleatoire(int min, int max);
 
 void lab_afficher_grille(int grille[][TAILLE_MAX_GRILLE],int hauteur_grille,int largeur_grille, int pile_solution[][2]);
 
