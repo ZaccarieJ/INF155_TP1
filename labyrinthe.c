@@ -83,6 +83,14 @@ int lab_choisir_deplacement( int deplacements_possibles[][2],int nb_deplacements
 }
 
 int lab_est_cases_adjacentes(int case1[2], int case2[2]) {
+
+    if (abs(case1[0]-case2[0]) + abs(case1[1]-case2[1])==1) {
+     return 1;
+    }
+    else {
+        return 0;
+    }
+
 }
 
 int lab_est_une_sortie( int position[2],int grille[][TAILLE_MAX_GRILLE],int hauteur_grille, int largeur_grille) {
