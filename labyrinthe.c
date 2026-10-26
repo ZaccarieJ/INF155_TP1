@@ -90,7 +90,7 @@ int lab_est_cases_adjacentes(int case1[2], int case2[2]) {
     else {
         return 0;
     }
-
+//
 }
 
 int lab_est_une_sortie( int position[2],int grille[][TAILLE_MAX_GRILLE],int hauteur_grille, int largeur_grille) {
