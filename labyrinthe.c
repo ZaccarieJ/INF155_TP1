@@ -37,7 +37,39 @@ void lab_calculer_deplacements_possibles(
     int solution_partielle[][2],
     int *nb_deplacements,
     int deplacements[4][2]) {
+    *nb_deplacements=0;
 
+
+    //Verifier en haut
+    if ( pos_ligne>0&& ((grille[pos_ligne-1][pos_colonne]==0)) && (!pile_contient(solution_partielle,pos_ligne-1,pos_colonne))){
+
+        deplacements[*nb_deplacements][0] = pos_ligne - 1;
+        deplacements[*nb_deplacements][1] = pos_colonne;
+        (*nb_deplacements)++;
+
+    }
+    //Verifier en bas
+    if ( pos_ligne < hauteur_grille - 1 && ((grille[pos_ligne+1][pos_colonne]==0)) && (!pile_contient(solution_partielle,pos_ligne+1,pos_colonne))){
+
+        deplacements[*nb_deplacements][0] = pos_ligne + 1;
+        deplacements[*nb_deplacements][1] = pos_colonne;
+        (*nb_deplacements)++;
+
+    }
+    //Verifier à gauche
+    if ( pos_colonne>0 && ((grille[pos_ligne][pos_colonne-1]==0)) && (!pile_contient(solution_partielle,pos_ligne,pos_colonne-1))){
+
+        deplacements[*nb_deplacements][0] = pos_ligne;
+        deplacements[*nb_deplacements][1] = pos_colonne-1;
+        (*nb_deplacements)++;
+    }
+
+    //Verifier à droite
+    if ( pos_colonne<largeur_grille-1 && ((grille[pos_ligne][pos_colonne+1]==0)) && (!pile_contient(solution_partielle,pos_ligne,pos_colonne+1))) {
+        deplacements[*nb_deplacements][0] = pos_ligne;
+        deplacements[*nb_deplacements][1] = pos_colonne+1;
+        (*nb_deplacements)++;
+    }
 }
 
 int lab_choisir_deplacement( int deplacements_possibles[][2],int nb_deplacements_possibles) {
