@@ -78,6 +78,8 @@ void lab_calculer_deplacements_possibles(
 }
 
 int lab_choisir_deplacement( int deplacements_possibles[][2],int nb_deplacements_possibles) {
+        int indice = nb_aleatoire(0,nb_deplacements_possibles-1);
+        return indice;
 }
 
 int lab_est_cases_adjacentes(int case1[2], int case2[2]) {
