@@ -94,6 +94,14 @@ int lab_est_cases_adjacentes(int case1[2], int case2[2]) {
 }
 
 int lab_est_une_sortie( int position[2],int grille[][TAILLE_MAX_GRILLE],int hauteur_grille, int largeur_grille) {
+
+    //Si la position en x ou en y est sur un des 4 cote de la grille et si oui alors on regarde si la coordonnees = 0 donc que ce n'est pas un mur
+    if (position[0]==0 || position[0]==hauteur_grille -1 || position [1]== 0 || position [1]==largeur_grille -1) {
+        if (grille[position[0]][position[1]] == 0) {
+            return 1;
+        }
+    }
+    return 0;
 }
 
 int lab_resoudre_profondeur(

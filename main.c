@@ -42,9 +42,9 @@ int main(void)
 	pile_empiler(la_pile, 10, 5);
 	pile_empiler(la_pile, 11, 6);
 	pile_empiler(la_pile, 12, 7);
-	pile_empiler(la_pile, 19, 8);
+	pile_empiler(la_pile, 19,8);
 	pile_empiler(la_pile, 5, 3);
-	pile_empiler(la_pile, 0, 1);
+	pile_empiler(la_pile, 0,  1);
 	pile_empiler(la_pile, 21, 8);
 
 	//ajouter par moi
@@ -140,6 +140,19 @@ int main(void)
 	}
 	//Test Randomiser
 	printf("Random : %d\n",lab_choisir_deplacement(deplacements, nb_dep_poss));
+
+
+	//PRINTF DES SORTIES
+	//Boucles for permettant de tester toutes les coordonnees de la grille en assignant la case a tester au compteur des boucles
+	for (int i=0; i<hauteur_grille; i++) {
+		for (int j=0; j<largeur_grille;j++ ) {
+			int pos[2]={i,j};
+			//Appel de la fonction et si on obtient 1 on print la case
+			if (lab_est_une_sortie(pos,grille,hauteur_grille,largeur_grille)) {
+				printf("La coordonnee: (%d,%d) est une sortie! \n" , pos[0],pos[1] );
+			}
+		}
+	}
 
 
 	system("pause");
