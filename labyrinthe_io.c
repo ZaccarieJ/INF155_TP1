@@ -1,18 +1,15 @@
 /*
 Module: labyrinthe_io
-
 Auteur: Filipe Carvalho - Thomas DiPietro - Zaccarie Jetee
-
 Date: 
 */
 
-
-/***********COMMANDES PRÉPROCESSEUR*************/
+//Inclusion Headers
 #include "labyrinthe_io.h"
-#include "pile.h"
 
 
-/*******IMPLEMENTATION DES FONCTIONS***********/
+
+
 
 int charger_labyrinthe(char* nom_fichier, int grille[][TAILLE_MAX_GRILLE], int point_entree[2], int* hauteur_grille, int* largeur_grille)
 {

@@ -1,7 +1,6 @@
 /*
 Titre: pile.c
 Description: Implémentation des fonctions du module pile
-
 Auteur: Anis Boubaker
 Date: 2017-02-01
 */

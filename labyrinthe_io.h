@@ -1,23 +1,22 @@
 /*
 Module: labyrinthe_io
 Description: Module de fonction d'entr�e/sortie en lien avec le programme du labyrinthe
-
 Auteur: Filipe Carvalho - Thomas DiPietro - Zaccarie Jetee
-
-Date: 
+Date: 2026-10-29
 */
 
 #ifndef LABYRINTHE_IO_H
 #define LABYRINTHE_IO_H
 
-
-//D�pendances du module
+#define TAILLE_MAX_NOM_FICHIER 100 //Taille maximale (en cracat�res) du nom de fichier
 #include "labyrinthe.h"
+#include "pile.h"
+#include "utilitaires.h"
 #include <stdio.h>
 #include <string.h>
 
-//Constantes
-#define TAILLE_MAX_NOM_FICHIER 100 //Taille maximale (en cracat�res) du nom de fichier
+
+
 
 /*
 Fonction: CHARGER_LABYRINTHE
@@ -38,10 +37,10 @@ Param�tres modifi�s : grille, point_entree, *hauteur_grille et *largeur_gril
 */
 
 
-
-#endif // !LABYRINTHE_IO_H
-
-
 int charger_labyrinthe(char* nom_fichier, int grille[][TAILLE_MAX_GRILLE], int point_entree[2], int* hauteur_grille, int* largeur_grille);
 void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille) ;
 int selection_menu(int grille_chargee);
+
+
+
+#endif //LABYRINTHE_IO_H

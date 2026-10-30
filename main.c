@@ -1,25 +1,22 @@
-/**
-TP2 - Labirynthe
+/*
+TP2 - Labyrinthe
 Ce projet vise � r�soudre un labyrinthe en trouvant un chemin qui nous mne vers
 la sortie du labyrinthe en partant de son entr�e.
-
-
 Auteurs: Filipe Carvalho - Thomas DiPietro - Zaccarie Jetee
+Date: 2026-10-29
+*/
 
-Date:
-
-**/
-
-
+//Inclusion Headers
 #include <stdio.h>
 #include <stdlib.h>
 #include "pile.h"
 #include "labyrinthe.h"
 #include "labyrinthe_io.h"
 #include <time.h>
+#include "utilitaires.h"
 
 #define TAILLE_MAX_PILE 1000 //La taille maximale des piles
-//Liste des prototypes
+
 
 int main(void)
 {

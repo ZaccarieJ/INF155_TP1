@@ -1,14 +1,15 @@
+/*
+Module: labyrinthe.c
+Description: Fournit l'ensemble de fonction permettant de r�soudre un labyrinthe
+Auteur: Filipe Carvalho - Thomas DiPietro - Zaccarie Jetee
+Date: 2026-10-29
+*/
 
+//Inclusion Headers
 #include "labyrinthe.h"
-#include "pile.h"
-#include "utilitaires.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
-
-
-// FONCTIONS A AJOUTER
-
 
 
 void lab_afficher_grille(
