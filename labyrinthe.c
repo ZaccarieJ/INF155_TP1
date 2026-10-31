@@ -174,19 +174,20 @@ int lab_resoudre_profondeur(
 
         //Il n'y a plus de chemins possibles a tester
         else {
-            printf("Il n'est plus possible de ce deplacer!");
+            //printf("Il n'est plus possible de ce deplacer!");
+            break;
         }
-
     }
 
+    if (lab_est_une_sortie(position_actuelle,grille,hauteur_grille,largeur_grille) && (position_actuelle[0] != entree[0] || position_actuelle[1] != entree[1] )) {
+        return 1;
+    }
 
-
-
-
-
-
+    else {
+        printf("Il n'est plus possible de ce deplacer!");
+        return 0;
+    }
 
 }
-
 
 
