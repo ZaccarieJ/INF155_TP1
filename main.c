@@ -1,7 +1,7 @@
 /*
 TP2 - Labyrinthe
-Ce projet vise � r�soudre un labyrinthe en trouvant un chemin qui nous mne vers
-la sortie du labyrinthe en partant de son entr�e.
+Ce projet vise a resoudre un labyrinthe en trouvant un chemin qui nous mene vers
+la sortie du labyrinthe en partant de son entree.
 Auteurs: Filipe Carvalho - Thomas DiPietro - Zaccarie Jetee
 Date: 2026-10-29
 */
@@ -31,6 +31,10 @@ int main(void)
 	int hauteur_grille, largeur_grille; //Stocke la taille de la grille charg�e depuis le disque
 	int succes_chargement; //Stocke une valeur vraie si la grille a �t� charg�e correctement.
 
+	int sol_partielle[TAILLE_MAX_GRILLE][2];
+	int deplacements[4][2];
+	int nb_dep_poss =0;
+
 	/*** PARTIE 1: FONCTIONNEMENT DE LA PILE ***/
 	//On initialise la pile
 	pile_initialiser(la_pile, TAILLE_MAX_PILE);
@@ -45,9 +49,7 @@ int main(void)
 	pile_empiler(la_pile, 21, 8);
 
 	//ajouter par moi
-	int sol_partielle[TAILLE_MAX_GRILLE][2];
-	int deplacements[4][2];
-	int nb_dep_poss =0;
+
 	//On regarde ce qui se trouve en haut de la pile, sans le d�piler
 	pile_haut_pile(la_pile, &depile_y, &depile_x);
 	printf("Le haut de la pile contient la coordonn�e: (%d, %d)\n", depile_y, depile_x);
@@ -140,13 +142,14 @@ int main(void)
 
 
 	//PRINTF DES SORTIES
+	//
 	//Boucles for permettant de tester toutes les coordonnees de la grille en assignant la case a tester au compteur des boucles
 	for (int i=0; i<hauteur_grille; i++) {
 		for (int j=0; j<largeur_grille;j++ ) {
 			int pos[2]={i,j};
 			//Appel de la fonction et si on obtient 1 on print la case
 			if (lab_est_une_sortie(pos,grille,hauteur_grille,largeur_grille)) {
-				printf("La coordonnee: (%d,%d) est une sortie! \n" , pos[0],pos[1] );
+				printf("La coordonnee: (%d,%d) est une sortie! \n" , pos[0],pos[1]);
 			}
 		}
 	}

@@ -12,6 +12,7 @@ Date: 2026-10-29
 #include <time.h>
 
 
+
 void lab_afficher_grille(
 
     int grille[][TAILLE_MAX_GRILLE],
@@ -112,6 +113,79 @@ int lab_resoudre_profondeur(
     int entree[2],
     int pile_solution[][2],
     int debug){
+
+    int pile_chemin_alt[1000][2];
+    int dep_possible[4][2];
+    int nb_deplacement_poss=0;
+    int nouvelle_pos[2];
+    int position_actuelle[2];
+
+
+
+    //INITIALISATION DES PILES
+    pile_initialiser(pile_chemin_alt,1000);
+    pile_initialiser(pile_solution,1000);
+
+    //Empiler l'entree dans pile solution
+    pile_empiler(pile_solution,entree[0],entree[1]);
+
+    pile_haut_pile(pile_solution,&position_actuelle[0],&position_actuelle[1]);
+
+    lab_calculer_deplacements_possibles(grille,hauteur_grille,largeur_grille,entree[0],entree[1],pile_solution,&nb_deplacement_poss,dep_possible);
+
+    while ((!lab_est_une_sortie(position_actuelle, grille, hauteur_grille, largeur_grille)
+        || (position_actuelle[0] == entree[0] && position_actuelle[1] == entree[1]))
+        && nb_deplacement_poss > 0) {
+
+        pile_haut_pile(pile_solution,&position_actuelle[0],&position_actuelle[1]);
+        lab_calculer_deplacements_possibles(grille,hauteur_grille,largeur_grille,
+        position_actuelle[0],position_actuelle[1],pile_solution,&nb_deplacement_poss,dep_possible);
+
+        //Si on a des deplacements possible
+        if (nb_deplacement_poss>0) {
+            //EMPILER DEPLACEMENT CHOISIS
+            int indice =lab_choisir_deplacement(dep_possible,nb_deplacement_poss);
+            pile_empiler(pile_solution,
+            dep_possible[indice][0],
+            dep_possible[indice][1]);
+
+            //EMPILER LES AUTRES DEPLACEMENTS DIFFERENTS DE L'INDICE
+            for (int i=0; i<nb_deplacement_poss; i++) {
+                if (i!=indice) {
+                    pile_empiler(pile_chemin_alt,dep_possible[i][0],dep_possible[i][1]);
+                }
+            }
+        }
+
+        //Si on a encore des chemins possibles a tester
+        else if (!pile_est_vide(pile_chemin_alt)){
+
+            pile_depiler(pile_chemin_alt,&nouvelle_pos[0],&nouvelle_pos[1]);
+
+            pile_haut_pile(pile_solution,&position_actuelle[0],&position_actuelle[1]);
+            while (!lab_est_cases_adjacentes(position_actuelle,nouvelle_pos)){
+
+                pile_depiler(pile_solution,&position_actuelle[0],&position_actuelle[1]);
+                pile_haut_pile(pile_solution,&position_actuelle[0],&position_actuelle[1]);
+            }
+
+            pile_empiler(pile_solution,nouvelle_pos[0],nouvelle_pos[1]);
+        }
+
+        //Il n'y a plus de chemins possibles a tester
+        else {
+            printf("Il n'est plus possible de ce deplacer!");
+        }
+
+    }
+
+
+
+
+
+
+
+
 }
 
 
