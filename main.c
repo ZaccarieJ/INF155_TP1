@@ -34,8 +34,10 @@ int main(void)
 	int sol_partielle[TAILLE_MAX_GRILLE][2];
 	int deplacements[4][2];
 	int nb_dep_poss =0;
-
-	/*** PARTIE 1: FONCTIONNEMENT DE LA PILE ***/
+	int pile_sol_final[TAILLE_MAX_PILE][2];
+	int debug=2;
+/*
+	/ PARTIE 1: FONCTIONNEMENT DE LA PILE /
 	//On initialise la pile
 	pile_initialiser(la_pile, TAILLE_MAX_PILE);
 
@@ -80,11 +82,11 @@ int main(void)
 		pile_depiler(la_pile, &depile_y, &depile_x);
 		printf("(%d, %d)\n", depile_y, depile_x);
 	}
-
+	*/
 	/*** PARTIE 2: CHARGEMENT D'UNE GRILLE DEPUIS LE DISQUE ***/
 	printf("\n\n");
 
-	succes_chargement=charger_labyrinthe("../grille1.txt", grille, point_entree, &hauteur_grille, &largeur_grille);
+	succes_chargement=charger_labyrinthe("../grille4.txt", grille, point_entree, &hauteur_grille, &largeur_grille);
 	//AFFICHER GRILLE
 	lab_afficher_grille(grille,hauteur_grille,largeur_grille,NULL);
 	if (!succes_chargement)
@@ -95,6 +97,7 @@ int main(void)
 		return EXIT_FAILURE;
 	}
 
+/*
 	//Si on est ici, c'est que le chargement s'est bien pass�.
 	printf("La grille comporte: %d lignes et %d colonnes\n", hauteur_grille, largeur_grille);
 	printf("Le point d'entree se trouve � la coordonn�e (%d, %d)\n", point_entree[0], point_entree[1]);
@@ -116,22 +119,19 @@ int main(void)
 	{
 		printf("La case (3,10) est un couloir.\n");
 	}
-
+*/
+	//Initialisation de toutes les piles
+	pile_initialiser(sol_partielle,TAILLE_MAX_GRILLE);
+	pile_initialiser(pile_sol_final,TAILLE_MAX_GRILLE);
 
 	//SÉPARATION -TEST
 	srand((unsigned int)time(NULL));
-	pile_initialiser(sol_partielle,TAILLE_MAX_GRILLE);
-	pile_empiler(sol_partielle, 0, 10);
-	pile_empiler(sol_partielle, 1, 10);
-	pile_empiler(sol_partielle, 1, 9);
-	pile_empiler(sol_partielle, 1, 8);
-	pile_empiler(sol_partielle, 2, 8);
-	pile_empiler(sol_partielle, 3, 8);
+
 
 
 	//pile_empiler(sol_partielle, 3, 10);
-	lab_afficher_grille(grille,hauteur_grille,largeur_grille,sol_partielle);
-	lab_calculer_deplacements_possibles(grille,hauteur_grille,largeur_grille,3,8,sol_partielle,&nb_dep_poss,deplacements);
+	//lab_afficher_grille(grille,hauteur_grille,largeur_grille,sol_partielle);
+	/*lab_calculer_deplacements_possibles(grille,hauteur_grille,largeur_grille,3,8,sol_partielle,&nb_dep_poss,deplacements);
 
 	printf("nb dep poss: %d\n",nb_dep_poss);
 	for (int i=0; i<nb_dep_poss;i++) {
@@ -155,8 +155,33 @@ int main(void)
 	}
 
 
-	
+	*/
+	debug = 2;
+	printf("Voulez-vous entrer en mode debug ? (0: NON || 1: OUI)\n");
 
+	while (debug != 0 && debug != 1) {
+		scanf("%d", &debug);
+
+		if (debug != 0 && debug != 1) {
+			printf("Valeur incorrecte! Reessayez : \n");
+		}
+	}
+
+	int solution_trouver = lab_resoudre_profondeur(
+		grille,
+		hauteur_grille,
+		largeur_grille,
+		point_entree,
+		pile_sol_final,
+		debug
+	);
+
+	if (solution_trouver == 1) {
+		printf("Le labyrinthe a ete resolu!\n");
+	}
+	else {
+		printf("Le labyrinthe ne peut donc pas etre resolu!\n");
+	}
 
 	system("pause");
 	return EXIT_SUCCESS;

@@ -22,11 +22,17 @@ void lab_afficher_grille(
 
     for (int i=0; i<hauteur_grille;i++) {
         for (int j=0; j<largeur_grille;j++) {
+            //si la case est un mur
             if (grille[i][j]==1) {
                 printf("%c",219);
             }
-            else if (grille[i][j]==0) {
-                printf("1");
+            //on s'assure qu'il y a une solution et si oui on regarde si la case fait partie de la solution
+            else if (pile_solution != NULL && pile_contient(pile_solution,i,j)) {
+                printf("X");
+            }
+            //Si on a une case qui n'est pas un mur ni une partie de la solution
+            else {
+                printf(" ");
             }
         }
         printf("\n");
@@ -124,18 +130,27 @@ int lab_resoudre_profondeur(
 
     //INITIALISATION DES PILES
     pile_initialiser(pile_chemin_alt,1000);
-    pile_initialiser(pile_solution,1000);
+
 
     //Empiler l'entree dans pile solution
     pile_empiler(pile_solution,entree[0],entree[1]);
 
+    //Si on est en mode debug on affiche la grille
+    if (debug == 1) {
+        lab_afficher_grille(grille, hauteur_grille, largeur_grille, pile_solution);
+        printf("\n");
+    }
+
+    //on met les coordonne de l'entre stocker dans pile solution dans notre position actuelle car on est a l'entre
     pile_haut_pile(pile_solution,&position_actuelle[0],&position_actuelle[1]);
 
+    //On calcul le nombre de deplacement possible a partir de notre entree
     lab_calculer_deplacements_possibles(grille,hauteur_grille,largeur_grille,entree[0],entree[1],pile_solution,&nb_deplacement_poss,dep_possible);
 
+    //(Tant que il y a une sortie trouvee qui est differente de l'entree) ET (le nombre de deplacement possible est superieur a 0 OU que la pile de chemin alternatif n'est pas vide on execute)
     while ((!lab_est_une_sortie(position_actuelle, grille, hauteur_grille, largeur_grille)
         || (position_actuelle[0] == entree[0] && position_actuelle[1] == entree[1]))
-        && nb_deplacement_poss > 0) {
+        && (nb_deplacement_poss > 0 || !pile_est_vide(pile_chemin_alt))) {
 
         pile_haut_pile(pile_solution,&position_actuelle[0],&position_actuelle[1]);
         lab_calculer_deplacements_possibles(grille,hauteur_grille,largeur_grille,
@@ -149,6 +164,11 @@ int lab_resoudre_profondeur(
             dep_possible[indice][0],
             dep_possible[indice][1]);
 
+            //Si on est en mode debug on affiche la grille
+            if (debug == 1) {
+                lab_afficher_grille(grille, hauteur_grille, largeur_grille, pile_solution);
+                printf("\n");
+            }
             //EMPILER LES AUTRES DEPLACEMENTS DIFFERENTS DE L'INDICE
             for (int i=0; i<nb_deplacement_poss; i++) {
                 if (i!=indice) {
@@ -170,6 +190,11 @@ int lab_resoudre_profondeur(
             }
 
             pile_empiler(pile_solution,nouvelle_pos[0],nouvelle_pos[1]);
+            //Si on est en mode debug on affiche la grille
+            if (debug == 1) {
+                lab_afficher_grille(grille, hauteur_grille, largeur_grille, pile_solution);
+                printf("\n");
+            }
         }
 
         //Il n'y a plus de chemins possibles a tester
@@ -177,6 +202,9 @@ int lab_resoudre_profondeur(
             //printf("Il n'est plus possible de ce deplacer!");
             break;
         }
+
+        //Mise a jour de la position actuelle
+        pile_haut_pile(pile_solution, &position_actuelle[0], &position_actuelle[1]);
     }
 
     if (lab_est_une_sortie(position_actuelle,grille,hauteur_grille,largeur_grille) && (position_actuelle[0] != entree[0] || position_actuelle[1] != entree[1] )) {
@@ -184,7 +212,7 @@ int lab_resoudre_profondeur(
     }
 
     else {
-        printf("Il n'est plus possible de ce deplacer!");
+        printf("Il n'est plus possible de ce deplacer! \n");
         return 0;
     }
 
