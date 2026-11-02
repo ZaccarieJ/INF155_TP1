@@ -20,12 +20,6 @@ Date: 2026-10-29
 
 int main(void)
 {
-	//NOTE: Ce code vous est fourni � titre d'exemple pour que vous compreniez
-	//le fonctionnement d'une pile. Vous ne devez pas conserver ce code avec votre projet!
-	int la_pile[TAILLE_MAX_PILE][2]; //Tableau qui sera utilis� pour stocker la pile d'exemple
-	int depile_x; //Stocke la coordonn�e x d�pil�e
-	int depile_y; //Stocke la coordonn�e y d�pil�e
-
 	int grille[TAILLE_MAX_GRILLE][TAILLE_MAX_GRILLE]; //Tableau 2D qui contient la grille du labyrinthe
 	int point_entree[2]; //Stocke les coordonn�es du point d'entr�e du labyrinthe lors du chargement
 	int hauteur_grille, largeur_grille; //Stocke la taille de la grille charg�e depuis le disque
@@ -135,58 +129,6 @@ while (test == 0) {
 
 
 
-	/*
-	printf("\n\n");
-	menu_charger_labyrinthe(nom_grille,TAILLE_MAX_GRILLE);
-	succes_chargement=charger_labyrinthe(nom_grille, grille, point_entree, &hauteur_grille, &largeur_grille);
-	//AFFICHER GRILLE
-	lab_afficher_grille(grille,hauteur_grille,largeur_grille,NULL);
-	if (!succes_chargement)
-	{
-		printf("Une erreur s'est produite lors du chargement de la grille.\n");
-		printf("Verifiez que le fichier de la grille se trouve bien dans le dossier du projet.\n");
-		system("pause");
-		return EXIT_FAILURE;
-	}
 
-
-	//Initialisation de toutes les piles
-	pile_initialiser(sol_partielle,TAILLE_MAX_GRILLE);
-	pile_initialiser(pile_sol_final,TAILLE_MAX_GRILLE);
-
-	//SÉPARATION -TEST
-	srand((unsigned int)time(NULL));
-
-
-	debug = 2;
-	printf("Voulez-vous entrer en mode debug ? (0: NON || 1: OUI)\n");
-
-	while (debug != 0 && debug != 1) {
-		scanf("%d", &debug);
-
-		if (debug != 0 && debug != 1) {
-			printf("Valeur incorrecte! Reessayez : \n");
-		}
-	}
-
-	int solution_trouver = lab_resoudre_profondeur(
-		grille,
-		hauteur_grille,
-		largeur_grille,
-		point_entree,
-		pile_sol_final,
-		debug
-	);
-
-	if (solution_trouver == 1) {
-		printf("Le labyrinthe a ete resolu!\n");
-	}
-	else {
-		printf("Le labyrinthe ne peut donc pas etre resolu!\n");
-	}
-
-	system("pause");
-	return EXIT_SUCCESS;
-	*/
 }
 
