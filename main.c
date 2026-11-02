@@ -36,57 +36,105 @@ int main(void)
 	int nb_dep_poss =0;
 	int pile_sol_final[TAILLE_MAX_PILE][2];
 	int debug=2;
-/*
-	/ PARTIE 1: FONCTIONNEMENT DE LA PILE /
-	//On initialise la pile
-	pile_initialiser(la_pile, TAILLE_MAX_PILE);
+	char nom_grille[100];
+	int grille_chargee = 0;
+	int test = 0;
 
-	//On empile un ensemble de valeurs...
-	pile_empiler(la_pile, 10, 5);
-	pile_empiler(la_pile, 11, 6);
-	pile_empiler(la_pile, 12, 7);
-	pile_empiler(la_pile, 19,8);
-	pile_empiler(la_pile, 5, 3);
-	pile_empiler(la_pile, 0,  1);
-	pile_empiler(la_pile, 21, 8);
+	//Initialisation de toutes les piles
+	pile_initialiser(sol_partielle,TAILLE_MAX_GRILLE);
+	pile_initialiser(pile_sol_final,TAILLE_MAX_GRILLE);
 
-	//ajouter par moi
+	//Random
+	srand((unsigned int)time(NULL));
 
-	//On regarde ce qui se trouve en haut de la pile, sans le d�piler
-	pile_haut_pile(la_pile, &depile_y, &depile_x);
-	printf("Le haut de la pile contient la coordonn�e: (%d, %d)\n", depile_y, depile_x);
 
-	//On v�rifie si certaines coordonn�es se trouvent dans la pile
-	if (pile_contient(la_pile, 12, 7))
-	{
-		printf("La pile contient bien la coordonnee 12,7\n");
-	}
-	else
-	{
-		printf("La coordonnee 12,7 n'est pas dans la pile!\n");
-	}
-	if (pile_contient(la_pile, 45, 8))
-	{
-		printf("La pile contient bien la coordonnee 45,8\n");
-	}
-	else
-	{
-		printf("La coordonnee 45,8 n'est pas dans la pile!\n");
-	}
 
-	//On d�pile tous les �l�ments de la pile en les affichant, jusqu'� ce qu'elle soit vide.
-	//Vous remarquerez que le dernier ajout� s'affiche en premier.
-	printf("\n*** Contenu de la pile: ***\n");
-	while (!pile_est_vide(la_pile))
-	{
-		pile_depiler(la_pile, &depile_y, &depile_x);
-		printf("(%d, %d)\n", depile_y, depile_x);
+
+while (test == 0) {
+	switch (selection_menu(grille_chargee)) {
+		case 1:
+			menu_charger_labyrinthe(nom_grille, 100);
+			succes_chargement=charger_labyrinthe(nom_grille, grille, point_entree, &hauteur_grille, &largeur_grille);
+			if (!succes_chargement)
+			{
+				printf("Une erreur s'est produite lors du chargement de la grille.\n");
+				printf("Verifiez que le fichier de la grille se trouve bien dans le dossier du projet.\n");
+				system("pause");
+
+			}else {
+				printf("Chargement de la grille fait avec succes!");
+				grille_chargee=1;
+			}
+			break;
+
+		case 2:
+			if (grille_chargee == 1) {
+				lab_afficher_grille(grille,hauteur_grille,largeur_grille,NULL);
+				break;
+			}else {
+				printf("Veuillez charger la grille avant de l'afficher\n");
+				break;
+			}
+		case 3:
+			if (grille_chargee == 1) {
+
+				debug = 2;
+				printf("Voulez-vous entrer en mode debug ? (0: NON || 1: OUI)\n");
+
+				while (debug != 0 && debug != 1) {
+					scanf("%d", &debug);
+
+					if (debug != 0 && debug != 1) {
+						printf("Valeur incorrecte! Reessayez : \n");
+					}
+				}
+
+				int solution_trouver = lab_resoudre_profondeur(
+					grille,
+					hauteur_grille,
+					largeur_grille,
+					point_entree,
+					pile_sol_final,
+					debug
+				);
+
+				if (solution_trouver == 1) {
+					printf("Le labyrinthe a ete resolu!\n");
+				}
+				else {
+					printf("Le labyrinthe ne peut donc pas etre resolu!\n");
+				}
+
+				system("pause");
+				return EXIT_SUCCESS;
+				break;
+			}else {
+				printf("Veuillez charger la grille avant de la résoudre\n");
+				break;
+			}
 	}
-	*/
-	/*** PARTIE 2: CHARGEMENT D'UNE GRILLE DEPUIS LE DISQUE ***/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	/*
 	printf("\n\n");
-
-	succes_chargement=charger_labyrinthe("../grille1.txt", grille, point_entree, &hauteur_grille, &largeur_grille);
+	menu_charger_labyrinthe(nom_grille,TAILLE_MAX_GRILLE);
+	succes_chargement=charger_labyrinthe(nom_grille, grille, point_entree, &hauteur_grille, &largeur_grille);
 	//AFFICHER GRILLE
 	lab_afficher_grille(grille,hauteur_grille,largeur_grille,NULL);
 	if (!succes_chargement)
@@ -97,29 +145,7 @@ int main(void)
 		return EXIT_FAILURE;
 	}
 
-/*
-	//Si on est ici, c'est que le chargement s'est bien pass�.
-	printf("La grille comporte: %d lignes et %d colonnes\n", hauteur_grille, largeur_grille);
-	printf("Le point d'entree se trouve � la coordonn�e (%d, %d)\n", point_entree[0], point_entree[1]);
 
-	if (grille[0][9] == 1)
-	{
-		printf("La case (0,9) est un mur.\n");
-	}
-	else
-	{
-		printf("La case (0,9) est un couloir.\n");
-	}
-
-	if (grille[3][10] == 1)
-	{
-		printf("La case (3,10) est un mur.\n");
-	}
-	else
-	{
-		printf("La case (3,10) est un couloir.\n");
-	}
-*/
 	//Initialisation de toutes les piles
 	pile_initialiser(sol_partielle,TAILLE_MAX_GRILLE);
 	pile_initialiser(pile_sol_final,TAILLE_MAX_GRILLE);
@@ -128,34 +154,6 @@ int main(void)
 	srand((unsigned int)time(NULL));
 
 
-
-	//pile_empiler(sol_partielle, 3, 10);
-	//lab_afficher_grille(grille,hauteur_grille,largeur_grille,sol_partielle);
-	/*lab_calculer_deplacements_possibles(grille,hauteur_grille,largeur_grille,3,8,sol_partielle,&nb_dep_poss,deplacements);
-
-	printf("nb dep poss: %d\n",nb_dep_poss);
-	for (int i=0; i<nb_dep_poss;i++) {
-		printf("%d,%d\n",deplacements[i][0],deplacements[i][1]);
-	}
-	//Test Randomiser
-	printf("Random : %d\n",lab_choisir_deplacement(deplacements, nb_dep_poss));
-
-
-	//PRINTF DES SORTIES
-	//
-	//Boucles for permettant de tester toutes les coordonnees de la grille en assignant la case a tester au compteur des boucles
-	for (int i=0; i<hauteur_grille; i++) {
-		for (int j=0; j<largeur_grille;j++ ) {
-			int pos[2]={i,j};
-			//Appel de la fonction et si on obtient 1 on print la case
-			if (lab_est_une_sortie(pos,grille,hauteur_grille,largeur_grille)) {
-				printf("La coordonnee: (%d,%d) est une sortie! \n" , pos[0],pos[1]);
-			}
-		}
-	}
-
-
-	*/
 	debug = 2;
 	printf("Voulez-vous entrer en mode debug ? (0: NON || 1: OUI)\n");
 
@@ -185,6 +183,6 @@ int main(void)
 
 	system("pause");
 	return EXIT_SUCCESS;
-
+	*/
 }
 

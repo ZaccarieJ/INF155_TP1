@@ -10,6 +10,7 @@ Date: 2026-10-29
 
 #define TAILLE_MAX_NOM_FICHIER 100 //Taille maximale (en cracat�res) du nom de fichier
 #include "labyrinthe.h"
+#include <stdlib.h>
 #include "pile.h"
 #include "utilitaires.h"
 #include <stdio.h>

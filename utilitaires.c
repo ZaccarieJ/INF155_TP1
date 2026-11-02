@@ -14,3 +14,4 @@ Date: 2026-10-29
 int nb_aleatoire(int min, int max){
     return min + (int)(rand() / (RAND_MAX + 0.001) * (max - min + 1));
 }
+
