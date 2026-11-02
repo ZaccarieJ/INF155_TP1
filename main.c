@@ -35,7 +35,7 @@ int main(void)
 	int test = 0;
 
 	//Initialisation de toutes les piles
-	pile_initialiser(sol_partielle,TAILLE_MAX_PILE);
+	pile_initialiser(sol_partielle,TAILLE_MAX_GRILLE);
 	pile_initialiser(pile_sol_final,TAILLE_MAX_PILE);
 
 	//Random
