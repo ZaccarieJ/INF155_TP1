@@ -86,7 +86,7 @@ int main(void)
 	/*** PARTIE 2: CHARGEMENT D'UNE GRILLE DEPUIS LE DISQUE ***/
 	printf("\n\n");
 
-	succes_chargement=charger_labyrinthe("../grille4.txt", grille, point_entree, &hauteur_grille, &largeur_grille);
+	succes_chargement=charger_labyrinthe("../grille1.txt", grille, point_entree, &hauteur_grille, &largeur_grille);
 	//AFFICHER GRILLE
 	lab_afficher_grille(grille,hauteur_grille,largeur_grille,NULL);
 	if (!succes_chargement)
