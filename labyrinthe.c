@@ -153,8 +153,7 @@ int lab_resoudre_profondeur(
         && (nb_deplacement_poss > 0 || !pile_est_vide(pile_chemin_alt))) {
 
         pile_haut_pile(pile_solution,&position_actuelle[0],&position_actuelle[1]);
-        lab_calculer_deplacements_possibles(grille,hauteur_grille,largeur_grille,
-        position_actuelle[0],position_actuelle[1],pile_solution,&nb_deplacement_poss,dep_possible);
+
 
         //Si on a des deplacements possible
         if (nb_deplacement_poss>0) {
@@ -205,6 +204,8 @@ int lab_resoudre_profondeur(
 
         //Mise a jour de la position actuelle
         pile_haut_pile(pile_solution, &position_actuelle[0], &position_actuelle[1]);
+        lab_calculer_deplacements_possibles(grille,hauteur_grille,largeur_grille,
+position_actuelle[0],position_actuelle[1],pile_solution,&nb_deplacement_poss,dep_possible);
     }
 
     if (lab_est_une_sortie(position_actuelle,grille,hauteur_grille,largeur_grille) && (position_actuelle[0] != entree[0] || position_actuelle[1] != entree[1] )) {
