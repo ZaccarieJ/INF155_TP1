@@ -62,14 +62,14 @@ while (test == 0) {
 				system("pause");
 
 			}else {
-				printf("Chargement de la grille fait avec succes!");
+				printf("Chargement de la grille fait avec succes! \n");
 				grille_chargee=1;
 			}
 			break;
 
 		case 2:
 			if (grille_chargee == 1) {
-				lab_afficher_grille(grille,hauteur_grille,largeur_grille,NULL);
+				lab_afficher_grille(grille,hauteur_grille,largeur_grille,pile_sol_final);
 				break;
 			}else {
 				printf("Veuillez charger la grille avant de l'afficher\n");
@@ -99,16 +99,20 @@ while (test == 0) {
 				);
 
 				if (solution_trouver == 1) {
+					lab_afficher_grille(grille,hauteur_grille,largeur_grille,pile_sol_final);
 					printf("Le labyrinthe a ete resolu!\n");
 				}
 				else {
+					lab_afficher_grille(grille,hauteur_grille,largeur_grille,pile_sol_final);
 					printf("Le labyrinthe ne peut donc pas etre resolu!\n");
+
 				}
 
 				system("pause");
 				return EXIT_SUCCESS;
 				break;
-			}else {
+			}
+			else {
 				printf("Veuillez charger la grille avant de la résoudre\n");
 				break;
 			}
