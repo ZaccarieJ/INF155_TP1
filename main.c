@@ -57,6 +57,7 @@ while (test == 0) {
 
 			}else {
 				printf("Chargement de la grille fait avec succes! \n");
+				lab_afficher_grille(grille, hauteur_grille, largeur_grille, pile_sol_final);
 				grille_chargee=1;
 			}
 			break;
@@ -70,9 +71,11 @@ while (test == 0) {
 				break;
 			}
 		case 3:
+			//RESOLUTION DU LABYRINTHE EN MODE NORMAL
 			if (grille_chargee == 1) {
 
 				debug = 2;
+				/* REMET SA SI VRM VOUS VOULEZ PA MAIS TESTE AVANT C MIEU COMME SA SI TENLEVE VA DANS LAB.IO.C JE T ECRIT QUOI ENLEVER(faut juste tenleve le slash etoile
 				printf("Voulez-vous entrer en mode debug ? (0: NON || 1: OUI)\n");
 
 				while (debug != 0 && debug != 1) {
@@ -82,14 +85,14 @@ while (test == 0) {
 						printf("Valeur incorrecte! Reessayez : \n");
 					}
 				}
-
+				*/ //ENleve sa aussi le etoile slash
 				int solution_trouver = lab_resoudre_profondeur(
 					grille,
 					hauteur_grille,
 					largeur_grille,
 					point_entree,
 					pile_sol_final,
-					debug
+					0
 				);
 
 				if (solution_trouver == 1) {
@@ -106,6 +109,36 @@ while (test == 0) {
 				return EXIT_SUCCESS;
 				break;
 			}
+
+		case 4:
+			//RESOLUTION DU LABYRINTHE EN MODE DEBUG
+			if (grille_chargee == 1) {
+				int solution_trouver = lab_resoudre_profondeur(
+					grille,
+					hauteur_grille,
+					largeur_grille,
+					point_entree,
+					pile_sol_final,
+					1
+				);
+
+				if (solution_trouver == 1) {
+					lab_afficher_grille(grille,hauteur_grille,largeur_grille,pile_sol_final);
+					printf("Le labyrinthe a ete resolu!\n");
+				}
+				else {
+					lab_afficher_grille(grille,hauteur_grille,largeur_grille,pile_sol_final);
+					printf("Le labyrinthe ne peut donc pas etre resolu!\n");
+
+				}
+
+				system("pause");
+				return EXIT_SUCCESS;
+				break;
+			}
+
+
+
 			else {
 				printf("Veuillez charger la grille avant de la résoudre\n");
 				break;

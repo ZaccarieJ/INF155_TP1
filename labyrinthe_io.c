@@ -70,11 +70,13 @@ void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille) {
 int selection_menu(int grille_chargee) {
 	int choix = 0;
 
-	while (choix < 1 || choix > 3) {
+	while (choix < 1 || choix > 4) {
 		printf("\n--- MENU LABYRINTHE ---\n");
 		printf("1 - Charger un labyrinthe\n");
 		printf("2 - Afficher le labyrinthe\n");
-		printf("3 - Resoudre le labyrinthe\n");
+		printf("3 - Resoudre le labyrinthe en mode normal\n");
+		//ENLEVE LA LIGNE 4- ... celle en dessou et change choix>4 pour choix > 3
+		printf("4 - Resoudre le labyrinthe en mode debug\n");
 		printf("Votre choix : ");
 		scanf("%d", &choix);
 		FFLUSH();

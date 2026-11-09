@@ -135,10 +135,11 @@ int lab_resoudre_profondeur(
     //Empiler l'entree dans pile solution
     pile_empiler(pile_solution,entree[0],entree[1]);
 
-    //Si on est en mode debug on affiche la grille
+    //Si on est en mode debug on affiche la nouvelle case et on fait une pause
     if (debug == 1) {
         lab_afficher_grille(grille, hauteur_grille, largeur_grille, pile_solution);
         printf("\n");
+        system("pause");
     }
 
     //on met les coordonne de l'entre stocker dans pile solution dans notre position actuelle car on est a l'entre
@@ -163,10 +164,11 @@ int lab_resoudre_profondeur(
             dep_possible[indice][0],
             dep_possible[indice][1]);
 
-            //Si on est en mode debug on affiche la grille
+            //Si on est en mode debug on affiche la nouvelle case et on fait une pause
             if (debug == 1) {
                 lab_afficher_grille(grille, hauteur_grille, largeur_grille, pile_solution);
                 printf("\n");
+                system("pause");
             }
             //EMPILER LES AUTRES DEPLACEMENTS DIFFERENTS DE L'INDICE
             for (int i=0; i<nb_deplacement_poss; i++) {
@@ -178,21 +180,26 @@ int lab_resoudre_profondeur(
 
         //Si on a encore des chemins possibles a tester
         else if (!pile_est_vide(pile_chemin_alt)){
-
+            //On depile la pile avec les coordonne des chemins alternatif et on met la coordonne que on vien de retirer dans nouvelle position
             pile_depiler(pile_chemin_alt,&nouvelle_pos[0],&nouvelle_pos[1]);
 
+            //on met la coordonne que on vien de mettre dans position actuelle dans la pile solution
             pile_haut_pile(pile_solution,&position_actuelle[0],&position_actuelle[1]);
+
+            //Tant que notre nouvelle position n'est pas une case adjacente a notre position actuelle on revien en arriere en depilant
             while (!lab_est_cases_adjacentes(position_actuelle,nouvelle_pos)){
 
                 pile_depiler(pile_solution,&position_actuelle[0],&position_actuelle[1]);
                 pile_haut_pile(pile_solution,&position_actuelle[0],&position_actuelle[1]);
             }
 
+            //maintenant que on a une case adjacente on empile la nouvelle position dans pile solution
             pile_empiler(pile_solution,nouvelle_pos[0],nouvelle_pos[1]);
-            //Si on est en mode debug on affiche la grille
+            //Si on est en mode debug on affiche la nouvelle case et on fait une pause
             if (debug == 1) {
                 lab_afficher_grille(grille, hauteur_grille, largeur_grille, pile_solution);
                 printf("\n");
+                system("pause");
             }
         }
 
