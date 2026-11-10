@@ -1,7 +1,7 @@
 /*
 Module: pile
 Description: Module offrant un ensemble de fonctions pour configurer et manipuler
-			 une pile de coordonnées entières. La pile stockée dans un tableau à deux
+			 une pile de coordonnï¿½es entiï¿½res. La pile stockï¿½e dans un tableau ï¿½ deux
 			 dimensions (n lignes, 2 colonnes)
 Auteur: Anis Boubaker
 Date: 2017-02-13
@@ -13,92 +13,92 @@ Date: 2017-02-13
 
 /*
 Fonction: pile_empiler
-Description: Empile les coordonnées new_ligne et new_colonne reçues en
-			 paramètre.
+Description: Empile les coordonnï¿½es new_ligne et new_colonne reï¿½ues en
+			 paramï¿½tre.
 Arguments:
 - pile (tableau d'entiers): Tableau contenant la structure de pile
-- new_ligne (entier): L'ordonnées à empiler
-- new_colonne (entier): L'abscisse à empiler
-Retour: Vrai si les coordonnés ont bien été empilées, faux sinon.
-Paramètres modifiés: pile.
+- new_ligne (entier): L'ordonnï¿½es ï¿½ empiler
+- new_colonne (entier): L'abscisse ï¿½ empiler
+Retour: Vrai si les coordonnï¿½s ont bien ï¿½tï¿½ empilï¿½es, faux sinon.
+Paramï¿½tres modifiï¿½s: pile.
 */
 int pile_empiler(int pile[][2], int new_ligne, int new_colonne);
 
 
 /*
 Fonction: pile_depiler
-Description: Dépile les coordonnées du haut de la pile, et les stocke
+Description: Dï¿½pile les coordonnï¿½es du haut de la pile, et les stocke
 			 dans les adresses fournies par les pointeurs ligne et colonne.
 
 Arguments:
 - pile (tableau d'entiers): Tableau contenant la structure de pile
-- ligne (pointeur d'entier): Adresse mémoire où stocker l'ordonnées dépilée
-- colonne (pointeur d'entier): Adresse mémoire où stocker l'abscisse dépilée
-Retour: Vrai si les coordonnés ont bien été dépilées, faux sinon.
-Paramètres modifiés: pile, *ligne, *colonne.
+- ligne (pointeur d'entier): Adresse mï¿½moire oï¿½ stocker l'ordonnï¿½es dï¿½pilï¿½e
+- colonne (pointeur d'entier): Adresse mï¿½moire oï¿½ stocker l'abscisse dï¿½pilï¿½e
+Retour: Vrai si les coordonnï¿½s ont bien ï¿½tï¿½ dï¿½pilï¿½es, faux sinon.
+Paramï¿½tres modifiï¿½s: pile, *ligne, *colonne.
 */
 int pile_depiler(int pile[][2], int* ligne, int* colonne);
 
 
 /*
 Fonction: pile_est_vide
-Description: Vérifie si la pile en paramètre est vide.
+Description: Vï¿½rifie si la pile en paramï¿½tre est vide.
 
 Arguments:
 - pile (tableau d'entiers): Tableau contenant la structure de pile
 Retour: Vrai si la pile est vide, faux sinon.
-Paramètres modifiés: aucun.
+Paramï¿½tres modifiï¿½s: aucun.
 */
 int pile_est_vide(int pile[][2]);
 
 /*
 Fonction: pile_contient
-Description: Vérifie si la pile en paramètre contient les coordonnées (ligne, colonne).
+Description: Vï¿½rifie si la pile en paramï¿½tre contient les coordonnï¿½es (ligne, colonne).
 
 Arguments:
 - pile (tableau d'entiers): Tableau contenant la structure de pile
-- ligne (entier): L'ordonnée
+- ligne (entier): L'ordonnï¿½e
 - colonne (entier): L'abscisse
-Retour: Vrai si la pile contient les coordonnées (ligne, colonne), faux sinon.
-Paramètres modifiés: aucun.
+Retour: Vrai si la pile contient les coordonnï¿½es (ligne, colonne), faux sinon.
+Paramï¿½tres modifiï¿½s: aucun.
 */
 int pile_contient(int pile[][2], int ligne, int colonne);
 
 /*
 Fonction: pile_haut_pile
 Description: Stocke dans les adresses fournies par les pointeurs ligne et colonne
-			 les coordonnées en haut de la pile, sans les dépiler.
+			 les coordonnï¿½es en haut de la pile, sans les dï¿½piler.
 
 Arguments:
 - pile (tableau d'entiers): Tableau contenant la structure de pile
-- ligne (pointeur d'entier): Adresse mémoire où stocker l'ordonnées dépilée
-- colonne (pointeur d'entier): Adresse mémoire où stocker l'abscisse dépilée
+- ligne (pointeur d'entier): Adresse mï¿½moire oï¿½ stocker l'ordonnï¿½es dï¿½pilï¿½e
+- colonne (pointeur d'entier): Adresse mï¿½moire oï¿½ stocker l'abscisse dï¿½pilï¿½e
 Retour: Aucun.
-Paramètres modifiés: *ligne, *colonne.
+Paramï¿½tres modifiï¿½s: *ligne, *colonne.
 */
 void pile_haut_pile(int pile[][2], int* ligne, int* colonne);
 
 /*
 Fonction: pile_taille_pile
-Description: Renvoie le nombre d'éléments dans la pile
+Description: Renvoie le nombre d'ï¿½lï¿½ments dans la pile
 
 Arguments:
 - pile (tableau d'entiers): Tableau contenant la structure de pile
-Retour: Le nombre d'éléments contenus dans la pile.
-Paramètres modifiés: aucun.
+Retour: Le nombre d'ï¿½lï¿½ments contenus dans la pile.
+Paramï¿½tres modifiï¿½s: aucun.
 */
 int pile_taille_pile(int pile[][2]);
 
 /*
 Fonction: pile_initialiser
 Description: Initialise un tableau afin de servir comme structure de pile. La colonne 0
-servira à stocker la taille du tableau ainsi que l'indice du haut de la pile.
+servira ï¿½ stocker la taille du tableau ainsi que l'indice du haut de la pile.
 
 Arguments:
-- pile (tableau d'entiers): Tableau qui servira à stocker la structure de la pile.
-- taille_max (entier): La taille du tableau (en mémoire).
+- pile (tableau d'entiers): Tableau qui servira ï¿½ stocker la structure de la pile.
+- taille_max (entier): La taille du tableau (en mï¿½moire).
 Retour: Aucun.
-Paramètres modifiés: pile.
+Paramï¿½tres modifiï¿½s: pile.
 */
 void pile_initialiser(int pile[][2], int taile_max);
 
@@ -110,11 +110,10 @@ Arguments:
 - pile_originale (tableau d'entiers): Tableau contenant une structure de pile.
 - pile_copie (tableau d'entiers): Tableau qui contiendra une copie de pile_originale.
 Retour: Aucun.
-Paramètres modifiés: pile_copie.
-Antécédents: On suppose que le tableau pile_copie a une taille supérieure ou égale au
+Paramï¿½tres modifiï¿½s: pile_copie.
+Antï¿½cï¿½dents: On suppose que le tableau pile_copie a une taille supï¿½rieure ou ï¿½gale au
 			 tableau pile_originale.
 */
 void pile_copier(int pile_originale[][2], int pile_copie[][2]);
-
 
 #endif

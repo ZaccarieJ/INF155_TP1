@@ -16,9 +16,6 @@ Date: 2026-10-29
 #include <stdio.h>
 #include <string.h>
 
-
-
-
 /*
 Fonction: CHARGER_LABYRINTHE
 Description: Charge un labyrinthe depuis le disque dur et le stocke dans "grille". Si une erreur
@@ -37,11 +34,8 @@ Retour : (valeur bool�enne) Vrai si la grille s�est charg�e correctement, 
 Param�tres modifi�s : grille, point_entree, *hauteur_grille et *largeur_grille.
 */
 
-
 int charger_labyrinthe(char* nom_fichier, int grille[][TAILLE_MAX_GRILLE], int point_entree[2], int* hauteur_grille, int* largeur_grille);
 void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille) ;
 int selection_menu(int grille_chargee);
-
-
 
 #endif //LABYRINTHE_IO_H

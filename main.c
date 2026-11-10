@@ -14,9 +14,7 @@ Date: 2026-10-29
 #include "labyrinthe_io.h"
 #include <time.h>
 #include "utilitaires.h"
-
 #define TAILLE_MAX_PILE 1000 //La taille maximale des piles
-
 
 int main(void)
 {
@@ -24,7 +22,6 @@ int main(void)
 	int point_entree[2]; //Stocke les coordonn�es du point d'entr�e du labyrinthe lors du chargement
 	int hauteur_grille, largeur_grille; //Stocke la taille de la grille charg�e depuis le disque
 	int succes_chargement; //Stocke une valeur vraie si la grille a �t� charg�e correctement.
-
 	int sol_partielle[TAILLE_MAX_GRILLE][2];
 	int deplacements[4][2];
 	int nb_dep_poss =0;
@@ -38,15 +35,14 @@ int main(void)
 	pile_initialiser(sol_partielle,TAILLE_MAX_GRILLE);
 	pile_initialiser(pile_sol_final,TAILLE_MAX_PILE);
 
-	//Random
+	//Initialiser le generateur de nombre aleaoire
 	srand((unsigned int)time(NULL));
 
-
-
-
+// Afficher le menu et executer les choix de l'utilisateur
 while (test == 0) {
 	switch (selection_menu(grille_chargee)) {
 		case 1:
+			//charger le labyrinthe
 			menu_charger_labyrinthe(nom_grille, 100);
 			succes_chargement=charger_labyrinthe(nom_grille, grille, point_entree, &hauteur_grille, &largeur_grille);
 			if (!succes_chargement)
@@ -63,6 +59,7 @@ while (test == 0) {
 			break;
 
 		case 2:
+			// Afficher la grille seulement si elle a ete chargee
 			if (grille_chargee == 1) {
 				lab_afficher_grille(grille,hauteur_grille,largeur_grille,pile_sol_final);
 				break;
@@ -73,19 +70,7 @@ while (test == 0) {
 		case 3:
 			//RESOLUTION DU LABYRINTHE EN MODE NORMAL
 			if (grille_chargee == 1) {
-
-				debug = 2;
-				/* REMET SA SI VRM VOUS VOULEZ PA MAIS TESTE AVANT C MIEU COMME SA SI TENLEVE VA DANS LAB.IO.C JE T ECRIT QUOI ENLEVER(faut juste tenleve le slash etoile
-				printf("Voulez-vous entrer en mode debug ? (0: NON || 1: OUI)\n");
-
-				while (debug != 0 && debug != 1) {
-					scanf("%d", &debug);
-
-					if (debug != 0 && debug != 1) {
-						printf("Valeur incorrecte! Reessayez : \n");
-					}
-				}
-				*/ //ENleve sa aussi le etoile slash
+				// Lancer la resolution et recuperer son resultat
 				int solution_trouver = lab_resoudre_profondeur(
 					grille,
 					hauteur_grille,
@@ -94,7 +79,7 @@ while (test == 0) {
 					pile_sol_final,
 					0
 				);
-
+				// Afficher la solution si le labyrinthe est resolu
 				if (solution_trouver == 1) {
 					lab_afficher_grille(grille,hauteur_grille,largeur_grille,pile_sol_final);
 					printf("Le labyrinthe a ete resolu!\n");
@@ -102,14 +87,11 @@ while (test == 0) {
 				else {
 					lab_afficher_grille(grille,hauteur_grille,largeur_grille,pile_sol_final);
 					printf("Le labyrinthe ne peut donc pas etre resolu!\n");
-
 				}
-
 				system("pause");
 				return EXIT_SUCCESS;
 				break;
 			}
-
 		case 4:
 			//RESOLUTION DU LABYRINTHE EN MODE DEBUG
 			if (grille_chargee == 1) {
@@ -121,7 +103,6 @@ while (test == 0) {
 					pile_sol_final,
 					1
 				);
-
 				if (solution_trouver == 1) {
 					lab_afficher_grille(grille,hauteur_grille,largeur_grille,pile_sol_final);
 					printf("Le labyrinthe a ete resolu!\n");
@@ -129,39 +110,16 @@ while (test == 0) {
 				else {
 					lab_afficher_grille(grille,hauteur_grille,largeur_grille,pile_sol_final);
 					printf("Le labyrinthe ne peut donc pas etre resolu!\n");
-
 				}
-
 				system("pause");
 				return EXIT_SUCCESS;
 				break;
 			}
-
-
-
 			else {
 				printf("Veuillez charger la grille avant de la résoudre\n");
 				break;
 			}
+		}
 	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 

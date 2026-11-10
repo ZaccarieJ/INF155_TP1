@@ -1,6 +1,6 @@
 /*
 Module: utilitaire.h
-Auteur: Filipe Carvalho - Thomas DiPietro - Zaccarie Jetee
+Auteur: Filipe Carvalho - Thomas Di Pietro - Zaccarie Jetee
 Date: 2026-10-29
 */
 
@@ -11,8 +11,6 @@ Date: 2026-10-29
 #include "utilitaires.h"
 #include "pile.h"
 #include "utilitaires.h"
-
-
 
 int nb_aleatoire(int min, int max);
 

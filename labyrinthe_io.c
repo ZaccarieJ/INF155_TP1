@@ -7,11 +7,6 @@ Date:
 //Inclusion Headers
 #include "labyrinthe_io.h"
 
-
-
-
-
-
 int charger_labyrinthe(char* nom_fichier, int grille[][TAILLE_MAX_GRILLE], int point_entree[2], int* hauteur_grille, int* largeur_grille)
 {
 	FILE* fichier;
@@ -23,7 +18,6 @@ int charger_labyrinthe(char* nom_fichier, int grille[][TAILLE_MAX_GRILLE], int p
 	{
 		return 0;
 	}
-
 	*largeur_grille = -1;
 	*hauteur_grille = -1;
 
@@ -60,13 +54,14 @@ int charger_labyrinthe(char* nom_fichier, int grille[][TAILLE_MAX_GRILLE], int p
 	fclose(fichier);
 	return 1;
 }
-
+// Demander le nom du fichier contenant le labyrinthe
 void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille) {
 	printf("Veuillez saisir un nom de fichier valide(forme : ../nom de la grille.txt): ");
+	// Lire le nom du fichier puis retier le "Enter"
 	fgets(buf_nom_fichier, buf_taille, stdin);
 	buf_nom_fichier[strlen(buf_nom_fichier) - 1] = '\0';
 }
-
+// Afficher le menu et lire le choix de l'utilisateur
 int selection_menu(int grille_chargee) {
 	int choix = 0;
 
@@ -75,14 +70,10 @@ int selection_menu(int grille_chargee) {
 		printf("1 - Charger un labyrinthe\n");
 		printf("2 - Afficher le labyrinthe\n");
 		printf("3 - Resoudre le labyrinthe en mode normal\n");
-		//ENLEVE LA LIGNE 4- ... celle en dessou et change choix>4 pour choix > 3
 		printf("4 - Resoudre le labyrinthe en mode debug\n");
 		printf("Votre choix : ");
 		scanf("%d", &choix);
 		FFLUSH();
 		return choix;
 	}
-
-
-
 }

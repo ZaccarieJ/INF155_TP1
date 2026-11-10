@@ -1,33 +1,31 @@
 /*
 Titre: pile.c
-Description: Implémentation des fonctions du module pile
+Description: Implï¿½mentation des fonctions du module pile
 Auteur: Anis Boubaker
 Date: 2017-02-01
 */
 
-/***********COMMANDES PRÉPROCESSEUR*************/
+/***********COMMANDES PRï¿½PROCESSEUR*************/
 #include <stdlib.h>
 #include "pile.h"
 
 /***********CONSTANTES DE COMPILATION*************/
 
 
-/********* DÉFINITION DES FONCTION **************/
+/********* Dï¿½FINITION DES FONCTION **************/
 
 int pile_empiler(int pile[][2], int new_ligne, int new_colonne)
 {
 	int top_pile = pile[0][1];
 	int taille_max_pile = pile[0][0];
 
-	//Vérifie que la pile peut encore recevoir des valeurs.
+	//Vï¿½rifie que la pile peut encore recevoir des valeurs.
 	if (top_pile + 1 >= taille_max_pile) {
 		return 0;
 	}
-
 	pile[top_pile + 1][0] = new_ligne;
 	pile[top_pile + 1][1] = new_colonne;
 	pile[0][1]++;
-
 	return 1;
 }
 
@@ -43,7 +41,6 @@ int pile_depiler(int pile[][2], int* ligne, int* colonne)
 	}
 	*ligne = pile[pile[0][1] + 1][0];
 	*colonne = pile[pile[0][1] + 1][1];
-
 	return 1;
 }
 

@@ -7,15 +7,10 @@ Date: 2026-10-29
 
 #ifndef LABYRINTHE_H
 #define LABYRINTHE_H
-
-
 #define TAILLE_MAX_GRILLE 100 //Taille maximale en lignes et colonnes d'une grille de labyrinthe
 #include "labyrinthe_io.h"
 #include "pile.h"
 #include "utilitaires.h"
-
-
-
 
 void lab_afficher_grille(int grille[][TAILLE_MAX_GRILLE],int hauteur_grille,int largeur_grille, int pile_solution[][2]);
 
@@ -31,7 +26,5 @@ int lab_est_une_sortie( int position[2],int grille[][TAILLE_MAX_GRILLE],int haut
 int lab_resoudre_profondeur(int grille[][TAILLE_MAX_GRILLE],int hauteur_grille,int largeur_grille,int entree[2],int pile_solution[][2], int debug);
 
 void menu_charger_labyrinthe(char* buf_nom_fichier, int buf_taille);
-
-
 
 #endif //LABYRINTHE_H
